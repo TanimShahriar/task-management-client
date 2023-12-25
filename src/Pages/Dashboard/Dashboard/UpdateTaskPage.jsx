@@ -36,8 +36,9 @@ const UpdateTaskPage = () => {
       })
   }
   return (
-    <div>
-      <div className="w-full md:w-1/2 mx-auto">
+    <div className="min-h-screen bg-orange-500">
+      <h2 className="text-3xl text-center font-semibold py-5">Update task</h2>
+      <div className="w-full md:max-w-screen-lg mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className="form-control w-full">
             <div className="label">
@@ -60,7 +61,7 @@ const UpdateTaskPage = () => {
                 <span className="label-text">Task Piority</span>
               </div>
 
-              <select {...register('category')} defaultValue={mytask.category} className="select select-bordered w-full max-w-xs" required>
+              <select {...register('category')} defaultValue={mytask.category} className="select select-bordered w-full max-w-lg" required>
                 <option disabled selected>Select a piority</option>
                 <option value="Low" >Low</option>
                 <option value="moderate" >Moderate</option>
@@ -73,7 +74,7 @@ const UpdateTaskPage = () => {
             <div className="label">
               <span className="label-text">Task Description</span>
             </div>
-            <textarea type="text" placeholder="Task Description" defaultValue={mytask.description}  {...register("description")} className="input input-bordered h-[90px] w-full " required />
+            <textarea type="text" placeholder="Task Description" defaultValue={mytask.description}  {...register("description")} className="input input-bordered h-[200px] w-full " required />
           </label>
           <input type="submit" className="btn w-full btn-[]" />
 

@@ -18,7 +18,7 @@ const UpdateTask = () => {
   })
   const mytask = createTask.filter(item => item.email == email)
   return (
-    <div className="bg-red-300 min-h-screen p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className=" p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
       {
         mytask.map(item => <UpdateTaskCard key={item._id} item={item}></UpdateTaskCard>)
       }

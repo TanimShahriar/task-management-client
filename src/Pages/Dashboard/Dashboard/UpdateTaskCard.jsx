@@ -10,7 +10,7 @@ const UpdateTaskCard = ({ item }) => {
 
   return (
     <div className=''>
-      <div className="card  bg-base-100 shadow-xl">
+      <div className=" bg-blue-400 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Title : {item.title}</h2>
 
@@ -20,7 +20,7 @@ const UpdateTaskCard = ({ item }) => {
           <p data-aos="zoom-in">Description:{item.description.slice(0, 150)}</p>
           <div className="card-actions ">
             <Link to={`updateTaskPage/${item._id}`}>
-              <button className="px-3 py-1 rounded-md bg-blue-500 text-white">Edit</button>
+              <button className="px-3 py-1 rounded-md bg-blue-800 text-white">Edit</button>
             </Link>
           </div>
         </div>

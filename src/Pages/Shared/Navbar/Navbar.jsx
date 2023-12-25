@@ -18,9 +18,9 @@ const Navbar = () => {
   const navLinks = <>
 
     <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/'>Home</NavLink>
-    <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/courses'>Tasks</NavLink>
+    <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/dashboard/allTask'>Tasks</NavLink>
 
-    <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/gallery'>Contact</NavLink>
+    <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/contact'>Contact</NavLink>
     {!user && <NavLink className="focus:bg-slate-800 px-3 py-1 text-lg  rounded-md text-black lg:text-white  btn-outline mr-2 duration-300 " to='/signUp'>Sign Up</NavLink>}
 
 

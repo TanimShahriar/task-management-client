@@ -55,7 +55,7 @@ const Dashboard = () => {
           </li>
 
           <li className="">
-            <NavLink to="/dashboard/contact">
+            <NavLink to="/contact">
               <MdEmail></MdEmail>
               Contact</NavLink>
           </li>

@@ -15,6 +15,7 @@ import CreateTask from "../Pages/Dashboard/Dashboard/CreateTask";
 import AllTask from "../Pages/Dashboard/Dashboard/AllTask";
 import UpdateTask from "../Pages/Dashboard/Dashboard/UpdateTask";
 import UpdateTaskPage from "../Pages/Dashboard/Dashboard/UpdateTaskPage";
+import Contact from "../Pages/Contact/Contact";
 
 
 
@@ -44,6 +45,11 @@ export const router = createBrowserRouter([
       {
         path: '/courseDetails/:id',
         element: <CourseDetails></CourseDetails>
+
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
 
       },
 
