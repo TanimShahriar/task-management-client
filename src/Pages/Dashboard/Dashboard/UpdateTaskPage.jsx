@@ -1,45 +1,49 @@
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 
+import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import moment from "moment";
-import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
-const CreateTask = () => {
-  const { user } = useAuth();
+
+const UpdateTaskPage = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const axiosPublic = useAxiosPublic();
-  const { register, handleSubmit, reset } = useForm();
+  const { data: createTask = [] } = useQuery({
+    queryKey: ['createTask'],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/createTask`)
+      return res.data
+    }
+  })
+  const mytask = createTask.find(item => item._id == id)
+
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const status = "todo"
-    const opentime = moment().format('D-MMM-YY, h:mma')
-    const email = user.email
-    console.log(data)
-    const newdata = { ...data, status, opentime, email }
-    axiosPublic.post('/createTask', newdata)
+    axiosPublic.put(`/taskUpdate/${id}`, data)
       .then(res => {
         console.log(res.data)
-        if (res.data.insertedId) {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
             text: "New task create successfully",
             icon: "success"
           });
         }
-        reset()
-        // navigate('/dashboard/adminprofile')
-      })
 
+        navigate('/dashboard/updateTask')
+      })
   }
   return (
     <div>
-      <h2 className="text-center text-3xl my-5 font-semibold">Create New Task</h2>
       <div className="w-full md:w-1/2 mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Task Title</span>
             </div>
-            <input type="text" placeholder="Task Title"  {...register("title")} className="input input-bordered w-full " required />
+            <input type="text" placeholder="Task Title" defaultValue={mytask.title}  {...register("title")} className="input input-bordered w-full " required />
           </label>
 
           <div className="flex gap-4 mt-4">
@@ -47,7 +51,7 @@ const CreateTask = () => {
               <div className="label">
                 <span className="label-text">Task Deadline</span>
               </div>
-              <input type="date" placeholder="Task Title"  {...register("deadline")} className="input input-bordered w-full " required />
+              <input type="date" placeholder="deadline" defaultValue={mytask.deadline}  {...register("deadline")} className="input input-bordered w-full " required />
 
 
             </label>
@@ -56,7 +60,7 @@ const CreateTask = () => {
                 <span className="label-text">Task Piority</span>
               </div>
 
-              <select {...register('category')} className="select select-bordered w-full max-w-xs" required>
+              <select {...register('category')} defaultValue={mytask.category} className="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select a piority</option>
                 <option value="Low" >Low</option>
                 <option value="moderate" >Moderate</option>
@@ -69,15 +73,19 @@ const CreateTask = () => {
             <div className="label">
               <span className="label-text">Task Description</span>
             </div>
-            <textarea type="text" placeholder="Task Description"  {...register("description")} className="input input-bordered h-[90px] w-full " required />
+            <textarea type="text" placeholder="Task Description" defaultValue={mytask.description}  {...register("description")} className="input input-bordered h-[90px] w-full " required />
           </label>
           <input type="submit" className="btn w-full btn-[]" />
 
         </form>
+
+
+
+
 
       </div>
     </div>
   );
 };
 
-export default CreateTask;
+export default UpdateTaskPage;

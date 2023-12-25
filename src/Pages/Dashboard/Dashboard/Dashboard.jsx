@@ -3,7 +3,7 @@ import { MdAnnouncement, MdCalendarMonth, MdEmail, MdHome, MdList, MdMenu, MdPeo
 import { MdAddTask } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 import { BsListTask } from "react-icons/bs";
-
+import { MdOutlineSecurityUpdate } from "react-icons/md";
 
 
 const Dashboard = () => {
@@ -17,8 +17,8 @@ const Dashboard = () => {
       <div className="w-[150px] lg:w-64 min-h-screen bg-slate-500">
 
         <div className="p-3 flex items-center gap-2 font-bold">
-          <Link to="/"><img className="h-10 lg:h-10 rounded-full" src="https://i.ibb.co/vLDL8fs/task-logo.png" alt="" /></Link>
-          <h2 className="text-lg">Soul<span className="text-red-800">tech</span> </h2>
+          <Link to="/"><img className="h-10 lg:h-11 rounded-full" src="https://i.ibb.co/vLDL8fs/task-logo.png" alt="" /></Link>
+          <h2 className="text-xl font-bold">Soul<span className="text-red-800">tech</span> </h2>
         </div>
 
         <ul className="menu p-0 lg:p-2 font-semibold space-y-1">
@@ -42,6 +42,11 @@ const Dashboard = () => {
             <NavLink to="/dashboard/createTask">
               <MdAddTask />
               Create Task</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="/dashboard/updateTask">
+              <MdOutlineSecurityUpdate />
+              Update Task</NavLink>
           </li>
           <li className="">
             <NavLink to="/dashboard/allTask">

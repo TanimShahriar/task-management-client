@@ -12,7 +12,7 @@ const Home = () => {
         <title>Educare Teaching | Home</title>
       </Helmet>
       <Banner></Banner>
-      <Courses></Courses>
+
     </div>
   );
 };

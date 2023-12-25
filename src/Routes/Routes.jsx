@@ -12,6 +12,9 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import PrivateRoutes from "./PrivateRoutes";
 import CreateTask from "../Pages/Dashboard/Dashboard/CreateTask";
+import AllTask from "../Pages/Dashboard/Dashboard/AllTask";
+import UpdateTask from "../Pages/Dashboard/Dashboard/UpdateTask";
+import UpdateTaskPage from "../Pages/Dashboard/Dashboard/UpdateTaskPage";
 
 
 
@@ -59,6 +62,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/createTask",
         element: <CreateTask></CreateTask>
+      },
+      {
+        path: "/dashboard/allTask",
+        element: <AllTask></AllTask>
+      },
+      {
+        path: "/dashboard/updateTask",
+        element: <UpdateTask></UpdateTask>
+      },
+      {
+        path: "/dashboard/updateTask/updateTaskPage/:id",
+        element: <UpdateTaskPage></UpdateTaskPage>
       },
 
     ]
