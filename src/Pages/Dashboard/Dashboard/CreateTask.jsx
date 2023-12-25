@@ -31,9 +31,9 @@ const CreateTask = () => {
 
   }
   return (
-    <div>
-      <h2 className="text-center text-3xl my-5 font-semibold">Create New Task</h2>
-      <div className="w-full md:w-1/2 mx-auto">
+    <div className="bg-lime-500 min-h-screen">
+      <h2 className="text-center text-3xl py-5 font-semibold">Create New Task</h2>
+      <div className="w-full  md:max-w-screen-lg mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className="form-control w-full">
             <div className="label">
@@ -53,11 +53,11 @@ const CreateTask = () => {
             </label>
             <label className="form-control w-full">
               <div className="label">
-                <span className="label-text">Task Piority</span>
+                <span className="label-text">Task Priority</span>
               </div>
 
-              <select {...register('category')} className="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select a piority</option>
+              <select {...register('category')} className="select select-bordered w-full max-w-lg" required>
+                <option disabled selected>Select a priority</option>
                 <option value="Low" >Low</option>
                 <option value="moderate" >Moderate</option>
                 <option value="high" >High</option>
@@ -69,7 +69,7 @@ const CreateTask = () => {
             <div className="label">
               <span className="label-text">Task Description</span>
             </div>
-            <textarea type="text" placeholder="Task Description"  {...register("description")} className="input input-bordered h-[90px] w-full " required />
+            <textarea type="text" placeholder="Task Description"  {...register("description")} className="input input-bordered h-[200px] w-full " required />
           </label>
           <input type="submit" className="btn w-full btn-[]" />
 

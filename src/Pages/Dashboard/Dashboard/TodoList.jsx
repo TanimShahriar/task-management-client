@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import TodoListCard from "./TodoListCard";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { useEffect } from 'react';
 
 const TodoList = () => {
   const axiosPublic = useAxiosPublic();
