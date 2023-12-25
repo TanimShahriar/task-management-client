@@ -10,6 +10,8 @@ import Courses from "../Pages/Home/Courses/Courses";
 import CourseDetails from "../Pages/Home/Courses/CourseDetails";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
+import PrivateRoutes from "./PrivateRoutes";
+import CreateTask from "../Pages/Dashboard/Dashboard/CreateTask";
 
 
 
@@ -48,13 +50,16 @@ export const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
       {
         path: "/dashboard/myProfile",
         element: <MyProfile></MyProfile>
       },
-
+      {
+        path: "/dashboard/createTask",
+        element: <CreateTask></CreateTask>
+      },
 
     ]
   }

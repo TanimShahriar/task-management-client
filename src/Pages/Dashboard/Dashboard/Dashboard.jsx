@@ -1,66 +1,71 @@
-import { useState } from "react";
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { RxDashboard } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { MdAnnouncement, MdCalendarMonth, MdEmail, MdHome, MdList, MdMenu, MdPeople, MdPeopleOutline, MdPerson, MdPlusOne } from "react-icons/md";
+import { MdAddTask } from "react-icons/md";
+import { ImProfile } from "react-icons/im";
+import { BsListTask } from "react-icons/bs";
+
+
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Inbox", src: "Chat" },
-    { title: "Accounts", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "Search", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Files ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
-  ];
+
 
   return (
+
+
     <div className="flex">
-      <div
-        className={` ${open ? "w-60" : "w-20 "
-          } bg-lime-600 h-screen p-5  pt-8 relative duration-300`}
-      >
-        <FaArrowCircleLeft
-          src="./src/assets/control.png"
-          className={`absolute cursor-pointer text-2xl text-white -right-3 top-9 w-7 
-            rounded-full  ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
-        />
-        <div className="flex gap-x-4 items-center">
-          <Link to="/"><img
-            src="https://i.ibb.co/vLDL8fs/task-logo.png"
-            className={`cursor-pointer text-white w-10 rounded-full duration-500 ${open && "rotate-[360deg]"
-              }`}
-          /></Link>
-          <h1
-            className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-              }`}
-          >
-            Soultech
-          </h1>
+      {/* dashboard sidebar */}
+      <div className="w-[150px] lg:w-64 min-h-screen bg-slate-500">
+
+        <div className="p-3 flex items-center gap-2 font-bold">
+          <Link to="/"><img className="h-10 lg:h-10 rounded-full" src="https://i.ibb.co/vLDL8fs/task-logo.png" alt="" /></Link>
+          <h2 className="text-lg">Soul<span className="text-red-800">tech</span> </h2>
         </div>
-        <ul className="pt-6">
-          {Menus.map((Menu, index) => (
-            <li
-              key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"
-                } `}
-            >
-              <img src={`./src/assets/${Menu.src}.png`} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
-                {Menu.title}
-              </span>
-            </li>
-          ))}
+
+        <ul className="menu p-0 lg:p-2 font-semibold space-y-1">
+
+
+          {/* shared content */}
+          <div className="divider"></div>
+
+          <li className="">
+            <NavLink to="/">
+              <MdHome className="text-xl"></MdHome>
+              Home</NavLink>
+          </li>
+
+          <li className="">
+            <NavLink to="/dashboard/myProfile">
+              <ImProfile />
+              My Profile</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="/dashboard/createTask">
+              <MdAddTask />
+              Create Task</NavLink>
+          </li>
+          <li className="">
+            <NavLink to="/dashboard/allTask">
+              <BsListTask />
+              All Task</NavLink>
+          </li>
+
+          <li className="">
+            <NavLink to="/dashboard/contact">
+              <MdEmail></MdEmail>
+              Contact</NavLink>
+          </li>
+
         </ul>
       </div>
-      <div className="bg-slate-300 min-h-screen flex-1 p-7">
-        <h1 className="text-2xl font-semibold ">Home Page</h1>
+
+
+      {/* dashboard content */}
+      <div className="w-56 lg:flex-1">
+        <Outlet></Outlet>
       </div>
+
     </div>
+
   );
 };
 
